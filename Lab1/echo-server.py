@@ -1,16 +1,32 @@
 import socket
 
-HOST = "127.0.0.1"  # Standard loopback interface address (localhost)
-PORT = 65432  # Port to listen on (non-privileged ports are > 1023)
+HOST = "0.0.0.0"  # all networks for listning
+PORT = 65432      # unprivileged port for server
 
 with socket.socket(socket.AF_INET, socket.SOCK_STREAM) as s:
     s.bind((HOST, PORT))
     s.listen()
+    print(f"Server started. Waiting for connection on port {PORT}...")
+    
     conn, addr = s.accept()
     with conn:
         print(f"Connected by {addr}")
+        
         while True:
-            data = conn.recv(1024)
+            # Receive message from client
+            data = conn.recv(1024).decode()
             if not data:
+                print("Client disconnected.")
                 break
-            conn.sendall(data)
+            
+            print(f"Client: {data}")
+
+           
+
+           
+            msg = input("Server: ")
+            conn.sendall(msg.encode())
+
+            if msg.lower() == "quit":
+                print("Server closing connection.")
+                break
