@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>💻 Computer Networks Lab 💻</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap');
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html, body {
+      width: 100%;
+      height: 100%;
+      background-color: #000;
+      font-family: 'Press Start 2P', monospace;
+      color: #00ff00;
+      overflow: hidden;
+      image-rendering: pixelated;
+    }
+
+    .blur-bg {
+      position: fixed;
+      top: 0; left: 0;
+      width: 100vw;
+      height: 100vh;
+      background: #050505;
+      filter: blur(10px);
+      z-index: 0;
+    }
+
+    .dots-container {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
+      pointer-events: none;
+      z-index: 1;
+    }
+
+    .dot {
+      position: absolute;
+      background: white;
+      border-radius: 50%;
+      opacity: 0.35;
+      filter: drop-shadow(0 0 6px white);
+      animation: floatUp linear infinite;
+    }
+
+    @keyframes floatUp {
+      0%   { transform: translateY(0); opacity: 0.5; }
+      100% { transform: translateY(-120vh); opacity: 0; }
+    }
+
+    .content-wrapper {
+      position: relative;
+      z-index: 10;
+      width: 100vw;
+      height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      padding: 2rem;
+      text-align: center;
+    }
+
+    h1 {
+      font-size: 2.2rem;
+      margin-bottom: 2rem;
+      text-shadow: 1px 1px 0 #003300, 2px 2px 0 #006600, 3px 3px 0 #00cc00;
+      filter: drop-shadow(0 0 3px #00ff00);
+    }
+
+    .content-box {
+      background: rgba(0, 51, 0, 0.7);
+      border: 3px solid #00ff00;
+      padding: 2rem;
+      max-width: 800px;
+      width: 100%;
+      box-shadow: 0 0 15px #00ff00;
+      border-radius: 6px;
+    }
+
+    .content-box ul {
+      text-align: left;
+      padding-left: 1.5rem;
+      margin-top: 1rem;
+      line-height: 2;
+    }
+
+    footer {
+      margin-top: 3rem;
+      font-size: 0.65rem;
+      color: #006600;
+    }
+
+    @media (max-width: 768px) {
+      h1 {
+        font-size: 1.2rem;
+      }
+
+      .content-box {
+        padding: 1rem;
+        font-size: 0.7rem;
+      }
+
+      .content-box ul {
+        padding-left: 1rem;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="blur-bg"></div>
+  <div class="dots-container" id="dots-container"></div>
+
+  <div class="content-wrapper">
+    <h1>💻 COMPUTER NETWORKS LAB 💻</h1>
+
+    <div class="content-box">
+      <p>🚀 Welcome to the Computer Networks Lab Showcase!</p>
+      <p><strong>Lab Objectives:</strong></p>
+      <ul>
+        <li>🌐 Build a Web Server in C using raw Sockets</li>
+        <li>📡 Handle TCP Requests & Client Connections</li>
+        <li>📄 Serve <code>index.html</code> with custom socket server</li>
+        <li>🧵 Use Multithreading for concurrent clients</li>
+        <li>🖥️ Design a pixel-themed interface for demonstration</li>
+      </ul>
+      <p>Master the art of communication between machines using low-level networking principles!</p>
+    </div>
+
+    <footer>
+      &copy; 2025 CN Lab | Built with C, TCP/IP, and Threads
+    </footer>
+  </div>
+
+  <script>
+    const container = document.getElementById("dots-container");
+    const numDots = 150; // ⬅️ Increased number of dots
+
+    function randomBetween(min, max) {
+      return Math.random() * (max - min) + min;
+    }
+
+    for (let i = 0; i < numDots; i++) {
+      const dot = document.createElement("div");
+      dot.classList.add("dot");
+
+      // Increased size range for visibility
+      const size = randomBetween(3, 6);
+      dot.style.width = `${size}px`;
+      dot.style.height = `${size}px`;
+
+      dot.style.left = `${randomBetween(0, 100)}vw`;
+      dot.style.top = `${randomBetween(100, 200)}vh`; // start below screen
+
+      const duration = randomBetween(10, 25);
+      const delay = randomBetween(0, 15);
+      dot.style.animationDuration = `${duration}s`;
+      dot.style.animationDelay = `${delay}s`;
+
+      container.appendChild(dot);
+    }
+  </script>
+
+</body>
+</html>

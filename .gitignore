@@ -1,0 +1,30 @@
+# Create or edit .gitignore file
+echo "# Compiled files
+Lab3/webServer
+*.o
+*.out
+*.exe
+
+# IDE and editor files
+.vscode/
+.idea/
+*.swp
+*~
+
+# OS generated files
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+
+# Python cache files
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Temporary files
+*.log
+*.tmp" > /home/ayushkarn/computer_networks/.gitignore
