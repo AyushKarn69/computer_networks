@@ -2,8 +2,7 @@
 
 ## 📘 Overview
 
-This repository contains implementations of various computer networking concepts, focusing on socket programming, client-server architectures, and multithreading. The projects are designed to demonstrate practical applications of networking protocols and concurrency in C and Python.
-
+This repository contains implementations of various computer networking concepts, WebSockets, client-server communication, and networking simulations using Cisco Packet Tracer.Includes hands-on implementations, configs, and practical experiments to understand real-world network behavior.
 ---
 
 ## 🧪 Projects
