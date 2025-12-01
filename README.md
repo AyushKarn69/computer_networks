@@ -1,4 +1,4 @@
-# Computer Networks Lab
+# Computer Networks Lab (CSBB 301)
 
 ## 📘 Overview
 
